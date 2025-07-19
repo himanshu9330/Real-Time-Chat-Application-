@@ -1,4 +1,4 @@
-const jwt= require("jsonwebtoken")
+import jwt from "jsonwebtoken";
 
 const generatetoken=(userId, res)=>{
     const token = jwt.sign({userId}, process.env.jwt_key, {
@@ -15,6 +15,4 @@ const generatetoken=(userId, res)=>{
     return token
 }
 
-module.exports={
-    generatetoken
-}
+export { generatetoken };

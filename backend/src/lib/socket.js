@@ -1,6 +1,6 @@
-const { Server } = require('socket.io');
-const http = require('http');
-const express = require('express');
+import { Server } from 'socket.io';
+import http from 'http';
+import express from 'express';
 
 const app = express();
 const server = http.createServer(app);
@@ -35,9 +35,9 @@ io.on("connection", (socket) => {
   });
 });
 
-module.exports = {
+export {
   io,
   app,
   server,
   getReceiverSocketId
-};
+}

@@ -1,9 +1,10 @@
-const express=require('express')
-const {Message}=require('../models/message');
-const { protectRouter } = require('../middleware/protect');
-const { User } = require('../models/user');
-const { cloudinary } = require('../lib/cloudinary');
-const {getReceiverSocketId , io} = require('../lib/socket');
+import express from 'express';
+import { Message } from '../models/message.js';
+import { protectRouter } from '../middleware/protect.js';
+import { User } from '../models/user.js';
+import { cloudinary } from '../lib/cloudinary.js';
+import { getReceiverSocketId } from '../lib/socket.js';
+
 
 const getMessageRouter = (io) =>{
 const message_router=express.Router();
@@ -100,4 +101,4 @@ message_router.post('/message/:id', protectRouter, async(req, res)=>{
    return message_router;
 }
 
-module.exports= getMessageRouter
+export default getMessageRouter;

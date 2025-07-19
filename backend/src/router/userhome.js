@@ -1,10 +1,12 @@
-const express=require('express')
-const bcrypt= require('bcryptjs')
-const {User}=require('../models/user');
-const { generatetoken } = require('../lib/auth');
+import express from 'express';
+import bcrypt from 'bcryptjs';
+import { User } from '../models/user.js';
+import { generatetoken } from '../lib/auth.js';
+import { protectRouter } from '../middleware/protect.js';
+import { cloudinary } from '../lib/cloudinary.js';
+
 const user_router=express.Router();
-const {protectRouter}=require('../middleware/protect')
-const {cloudinary}=require('../lib/cloudinary')
+
 
 
 //sign up or new user create
@@ -132,7 +134,4 @@ user_router.get('/check', protectRouter, (req,res)=>{
 })
 
 
-module.exports={
-    user_router
-}
-
+export { user_router };

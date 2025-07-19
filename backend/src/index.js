@@ -1,16 +1,16 @@
-const express = require('express')
-const mongodb= require('mongoose')
-const dotenv= require('dotenv')
-const cookieParser= require('cookie-parser')
-const cors =require('cors')
-const {app, server, io}=require('./lib/socket')
+import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import { fileURLToPath } from 'url';
+import { app, server, io } from './lib/socket.js';
+import { user_router } from './router/userhome.js';
+import getMessageRouter from './router/message.js';
 
 //during deployment//
-import path from "path";
+import path from 'path';
 
-
-const { user_router}=require('./router/userhome')
-const  getMessageRouter = require('./router/message')
 
 dotenv.config();
 
@@ -18,7 +18,7 @@ dotenv.config();
 const __dirname = path.resolve();
 
 //connection
-mongodb.connect(process.env.mongo_url)
+mongoose.connect(process.env.mongo_url)
 .then(()=>{
     console.log('mongodb is connected')
 })

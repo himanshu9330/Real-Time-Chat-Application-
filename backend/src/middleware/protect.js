@@ -1,5 +1,5 @@
-const {User}=require('../models/user')
-const jwt =require('jsonwebtoken')
+import jwt from 'jsonwebtoken';
+import { User } from '../models/user.js';
 
 const protectRouter=async(req,res,next)=>{
     try{
@@ -22,6 +22,4 @@ const protectRouter=async(req,res,next)=>{
     }
 }
 
-module.exports={
-    protectRouter
-}
+export { protectRouter };
