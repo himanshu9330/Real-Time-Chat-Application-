@@ -81,7 +81,7 @@ user_router.post('/signin', async(req, res)=>{
                        })
 
                }catch(error){
-                          console.log("error in signin:",message.error)
+                          console.log("error in signin:", error.message)
                           return res.status(500).json({message:"Internal server error"})
                }
 })
@@ -93,7 +93,7 @@ user_router.post('/logout', async(req, res)=>{
                  res.cookie("jwt", "",{maxAge:0})
           return res.status(200).json({message:"Logout successfully"})
          }catch(error){
-             console.log(message.error,"error in logout")
+             console.log(error.message, "error in logout")
              return res.status(500).json({message:"Internal server error"})
          }
 })
@@ -116,7 +116,7 @@ user_router.put('/update', protectRouter, async(req, res)=>{
                  })
 
                 } catch (error) {
-                  console.log("error in update:",message.error)
+                  console.log("error in update:", error.message)
                   return res.status(500).json({message:"Internal server error"})
                 }
 })

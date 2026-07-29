@@ -29,7 +29,7 @@ mongoose.connect(process.env.mongo_url)
 
 
 
-const port= process.env.port;
+const port = process.env.PORT || 3000;
 //middleware
 app.use(express.json({ limit: '20mb' })); // increase limit from default 100kb
 app.use(express.urlencoded({ extended: true, limit: '20mb' }));
@@ -37,7 +37,9 @@ app.use(cookieParser());
 
 
 app.use(cors({
-       origin:"http://localhost:5173",
+       origin: process.env.NODE_ENV === "production"
+         ? process.env.FRONTEND_URL
+         : "http://localhost:5173",
        credentials: true
 }))
 
